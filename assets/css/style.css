@@ -1,0 +1,46 @@
+body {
+    background-image: url("../images/bg-img-sm.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    font-size: 1em;
+}
+
+/* Fighter Cards */
+
+.fighter-card {
+    color: white;
+    background-color: rgba(167, 169, 214, 0.8);
+    border: 5px solid #6585b6;
+    border-radius: 10px;
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+}
+
+.fighter-name {
+    font-size: 1.3em;
+    color: #ffff9e;
+}
+
+/* Battle Dome */
+#battledome {
+    background-color: rgba(187, 200, 216, 0.8);
+    border: 10px solid #a78a98;
+    border-radius: 10px;
+}
+
+/* Enemies Remaining */
+#enemies-row {
+    background-color: rgba(254, 167, 139, 0.8);
+    border: 2px solid #ffd83a;
+    border-radius: 10px;
+}
+
+/* javascript classes to display and block*/
+.clear {
+    display: none;
+}
+
+.block {
+    display: block;
+}

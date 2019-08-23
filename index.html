@@ -1,85 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>hello world</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>Adventure Time</title>
 </head>
+
 <body>
-    <!-- Headline -->
-    <h1>hello world!</h1>
+    <div class="container">
+        <div class="row col-12">
+            <h1>Adventure Time Battle!</h1>
+        </div>
 
-    <!-- Paragraph-->
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quis, assumenda minima soluta alias, sunt debitis ab totam, beatae quos libero qui maxime! Repellendus incidunt sint molestiae quae, veniam dolorem.
-    </p>
+        <div class="row" id="fighter-row">
 
-    <!-- Image with alternate and hover text -->
-    <img src="http://en.spongepedia.org/images/thumb/3/33/Spongebob!!!.jpg/180px-Spongebob!!!.jpg" alt="spongebob!" title="whee">
+            <div class="fluid fighter-card" id="fighter-0">
+                <h3 class="fighter-name">Finn & Jake!</h2>
+                    <img src="assets/images/sm-fighter-0.png" class="img-fluid" id="fighter-img-0">
+                    <div id="fighter-hp-0">100 HP</div>
+            </div>
 
-    <br>
+            <div class="fluid fighter-card" id="fighter-1">
+                <h3 class="fighter-name">Ice King!</h2>
+                    <img src="assets/images/sm-fighter-1.png" class="img-fluid" id="fighter-img-0">
+                    <div id="fighter-hp-1">120 HP</div>
+            </div>
 
-    <!-- Link to a new tab -->
-    <a href="https://www.google.com/" target="_blank">google</a>
+            <div class="fluid fighter-card" id="fighter-2">
+                <h3 class="fighter-name">Marceline!</h2>
+                    <img src="assets/images/sm-fighter-2.png" class="img-fluid" id="fighter-img-0">
+                    <div id="fighter-hp-2">160 HP</div>
+            </div>
 
-    <br>
+            <div class="fluid fighter-card" id="fighter-3">
+                <h3 class="fighter-name">Flame Princess!</h2>
+                    <img src="assets/images/sm-fighter-3.png" class="img-fluid" id="fighter-img-0">
+                    <div id="fighter-hp-3">180 HP</div>
+            </div>
 
-    <!-- Emphasis Link -->
-    <strong><a href="https://www.youtube.com/" target="_blank">sup</a></strong>
+        </div>
 
-    <br>
+        <div class="d-flex flex-row justify-content-between p-2" id="battledome">
 
-    <b>another kinda bold</b>
+            <div id="character-box">
+                <h2>Your Character</h2>
+                <div id="character"></div>
+            </div>
 
-    <br>
+            <div id="attack-box">
+                <h2>Fight!</h2>
+                <button id="battle">Attack!</button>
+            </div>
 
-    <em>but actually use this?</em>
+            <div id="defender-box">
+                <h2>Defender</h2>
+                <div id="enemies"></div>
+            </div>
 
-    <br>
+        </div>
 
-    <!-- Placeholder Link -->
-    <a href="#">this is a placeholder, it goes nowhere</a>
-    <!-- this is where you keep a placeholder for pages that haven't been nmade yet-->
-    <br>
 
-    <!-- Ordered & Unordered List -->
-    <h1>Ordered List</h1>
-    <ol>
-        <li>hi</li>
-        <li>world</li>
-    </ol>
 
-    <br>
+        <div class="d-flex flex-row justify-content-start" id="enemies-row">
+            <h2>Enemies Remaining:</h2>
+            
+        </div>
 
-    <h2>Unordered Lists</h2>
-    <ul>
-        <li>nope</li>
-        <li>nah</li>
-    </ul>
-    
-    <!-- Table -->
 
-    <table style="width: 100%">
-        <tr>
-            <th>animal class</th>
-            <th>animal name</th>
-        </tr>
 
-        <tr>
-            <td>mammal</td>
-            <td>hyena</td>
-        </tr>
-        <tr>
-            <td>reptile</td>
-            <td>iguana</td>
-        </tr>
-        <tr>
-            <td>bird</td>
-            <td>eagle</td>
-        </tr>
-    
-    </table>
+
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
-</html>
 
+</html>
