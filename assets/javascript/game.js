@@ -13,11 +13,11 @@ $(document).ready(function () {
 
 
     var game = {
-
         //all fighter arrays
         fighterArray: [$("#fighter-0"), $("#fighter-1"), $("#fighter-2"), $("#fighter-3")],
         fighterHpArray: [100, 120, 160, 180],
-        fighterAtkArray: [25, 30, 40, 50],
+        fighterAtkArray: [12, 8, 7, 9],
+        fighterHpTxtArray: [$("#fighter-hp-0"), $("#fighter-hp-1"), $("#fighter-hp-2"), $("#fighter-hp-3")],
 
         //enemies array
         enemiesArray: [],
@@ -32,8 +32,14 @@ $(document).ready(function () {
         //defender values
         defenderSelected: false,
         defender: "",
-        defenderHP: 10,
+        defenderHp: 10,
         defenderAtk: 10,
+        defenderHpTxt: "",
+
+        //Attack & Play Again
+        attackBtn: $("#attack-btn"),
+        attackTxt: $("#attack-txt"),
+        playAgainBtn: $("#play-again"),
 
         //battledome div
         battledome: $("#battledome"),
@@ -43,6 +49,7 @@ $(document).ready(function () {
         defenderDiv: $("#defender-box"),
         //enemies remaining div
         enemiesRemainDiv: $("#enemies-row"),
+
 
         //character selection, placing on game board
         chooseCharacter: function () {
@@ -56,6 +63,7 @@ $(document).ready(function () {
                     game.fighterArray[i].css("display", "block");
                     game.playerHp = game.fighterHpArray[i];
                     game.playerAtk = game.fighterAtkArray[i];
+                    game.playerHpTxt = game.fighterHpTxtArray[i];
                 } else {
                     game.fighterArray[i].css("display", "none");
                     enemy = $("#enemy-" + i);
@@ -66,9 +74,6 @@ $(document).ready(function () {
             for (i = 0; i < game.enemiesArray.length; i++) {
                 game.enemiesArray[i].css("display", "block");
             };
-
-            console.log("player attack: " + game.playerAtk);
-            console.log("player hp: " + game.playerHp);
         },
 
         chooseCharacterOnClick: function () {
@@ -96,33 +101,41 @@ $(document).ready(function () {
 
         // Choose Enemy
         chooseEnemy: function () {
-        
+
             if (game.defenderSelected) {
 
-                $("#attack-txt").text("You are already in a battle!");
-                
-            } else {
-            game.defenderHP = game.fighterHpArray[enemyClicked];
-            game.defenderAtk = game.fighterAtkArray[enemyClicked];
-            game.defenderSelected = true;
-            
-            switch (enemyClicked) {
-                case 0:
-                    game.defender = $("#enemy-0");
-                    break;
-                case 1:
-                    game.defender = $("#enemy-1");
-                    break;
-                case 2:
-                    game.defender = $("#enemy-2");
-                    break;
-                case 3:
-                    game.defender = $("#enemy-3");
-                    break;
-            }
+                game.attackTxt.text("You are already in a battle!");
 
-            game.defenderDiv.append(game.defender);
-        };
+            } else {
+
+                game.defenderDiv.empty();
+
+                game.defenderHp = game.fighterHpArray[enemyClicked];
+                game.defenderAtk = game.fighterAtkArray[enemyClicked];
+                game.defenderHpTxt = $("#defender-hp-" + enemyClicked);
+                game.defenderSelected = true;
+
+                switch (enemyClicked) {
+                    case 0:
+                        game.defender = $("#enemy-0");
+                        game.defenderHpTxt = $("#defender-hp-0")
+                        break;
+                    case 1:
+                        game.defender = $("#enemy-1");
+                        game.defenderHpTxt = $("#defender-hp-1")
+                        break;
+                    case 2:
+                        game.defender = $("#enemy-2");
+                        game.defenderHpTxt = $("#defender-hp-2")
+                        break;
+                    case 3:
+                        game.defender = $("#enemy-3");
+                        game.defenderHpTxt = $("#defender-hp-3")
+                        break;
+                }
+
+                game.defenderDiv.append(game.defender);
+            };
         },
 
         chooseEnemyOnClick: function () {
@@ -130,39 +143,89 @@ $(document).ready(function () {
             $("#enemy-0").on("click", function () {
                 enemyClicked = 0;
                 game.chooseEnemy();
-                console.log("defender HP: " + game.defenderHP);
-                console.log("defender Attack: " + game.defenderAtk);
-                console.log("defender selected?" + game.defenderSelected);
             });
 
             $("#enemy-1").on("click", function () {
                 enemyClicked = 1;
                 game.chooseEnemy();
-                console.log("defender HP: " + game.defenderHP);
-                console.log("defender Attack: " + game.defenderAtk);
-                console.log("defender selected?" + game.defenderSelected);
             });
 
             $("#enemy-2").on("click", function () {
                 enemyClicked = 2;
                 game.chooseEnemy();
-                console.log("defender HP: " + game.defenderHP);
-                console.log("defender Attack: " + game.defenderAtk);
-                console.log("defender selected?" + game.defenderSelected);
             });
 
             $("#enemy-3").on("click", function () {
                 enemyClicked = 3;
                 game.chooseEnemy();
-                console.log("defender HP: " + game.defenderHP);
-                console.log("defender Attack: " + game.defenderAtk);
-                console.log("defender selected?" + game.defenderSelected);
             });
         },
+
+        // Attack function
+        attackOnClick: function () {
+            game.attackBtn.on("click", function () {
+                if (game.defenderSelected) {
+                    game.defenderHp -= game.playerAtk;
+                    game.playerHp -= game.defenderAtk;
+                    game.playerAtk += 6;
+
+                    if (game.playerHp <= 0) {
+                        game.attackTxt.text("you lose :(");
+                        game.playerHpTxt.text(game.playerHp + " HP");
+                        game.defenderHpTxt.text(game.defenderHp + " HP");
+                        game.attackBtn.css("display", "none");
+                    } else if (game.defenderHp <= 0) {
+                        game.defenderSelected = false;
+                        game.attackTxt.text("YOU WIN! :)");
+                        game.playerHpTxt.text(game.playerHp + " HP");
+                        game.defenderHpTxt.text(game.defenderHp + " HP");
+                        game.defender.css("display", "none");
+                        game.enemiesDefeatedArray.push(game.defender);
+                        console.log(game.enemiesDefeatedArray);
+                        if (game.enemiesDefeatedArray.length === 3) {
+                            game.attackBtn.css("display", "none");
+                        }
+                    } else {
+                        game.attackTxt.text("you hit the enemy for -" + game.playerAtk + " damage! ");
+                        game.attackTxt.append("the enemy hits you for -" + game.defenderAtk + " damage! ");
+                        game.playerHpTxt.text(game.playerHp + " HP");
+                        game.defenderHpTxt.text(game.defenderHp + " HP");
+                    };
+
+                } else {
+                    game.defenderDiv.text("Choose an opponant!!");
+                };
+            });
+        },
+
+        playAgainOnClick: function () {
+            game.playAgainBtn.on("click", function () {
+                for (i = 0; i < game.fighterArray.length; i++) {
+                    $("#fighter-row").append(game.fighterArray[i]);
+                    game.fighterArray[i].css("display", "block");
+                }
+
+                for (i=0; i < game.enemiesArray.length; i++) {
+                    game.enemiesArray[i].css("display", "none");
+                }
+
+                game.fighterHpArray = [100, 120, 160, 180];
+                game.fighterAtkArray = [10, 8, 7, 9];
+                game.defender = "";
+                game.enemiesArray = [];
+                game.enemiesDefeatedArray = [];
+                game.defenderSelected = false;
+                game.attackBtn.css("display", "block");
+                game.attackTxt.empty();
+
+            });
+        }
 
     }
 
     game.chooseCharacterOnClick();
     game.chooseEnemyOnClick();
+    game.attackOnClick();
+    game.playAgainOnClick();
 
 });

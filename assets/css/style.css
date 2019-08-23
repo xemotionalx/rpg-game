@@ -34,6 +34,8 @@ body {
     border-radius: 10px;
 }
 
+
+
 /* Enemies Remaining */
 #enemies-row {
     background-color: rgba(254, 167, 139, 0.8);
@@ -49,13 +51,4 @@ body {
 
 #enemy-0, #enemy-1, #enemy-2, #enemy-3  {
     display: none;
-}
-
-/* javascript classes to display and block*/
-.clear {
-    display: none;
-}
-
-.block {
-    display: block;
 }
