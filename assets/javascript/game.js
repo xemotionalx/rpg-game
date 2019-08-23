@@ -31,25 +31,26 @@ $(document).ready(function () {
 
         //character selection, placing on game board
         chooseCharacter: function () {
+
             game.battledome.css("display", "block");
 
             for (i = 0; i < game.fighterArray.length; i++) {
-
-                game.fighterArray[i].css("display", "none");
 
                 if (i === fighter) {
                     game.characterDiv.append(game.fighterArray[i]);
                     game.fighterArray[i].css("display", "block");
                     console.log(game.fighterArray[i]);
+
                 } else {
+                    game.fighterArray[i].css("display", "none");
                     enemy = $("#enemy-" + i);
                     game.enemiesArray.push(enemy);
-                    for (i = 0; i < game.enemiesArray.length; i++) {
-                        game.enemiesArray[i].css("display", "block");
-                    }
                 };
             };
 
+            for (i = 0; i < game.enemiesArray.length; i++) {
+                game.enemiesArray[i].css("display", "block");
+            };
 
         },
 
