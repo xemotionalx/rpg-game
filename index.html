@@ -13,6 +13,10 @@
     <!-- My CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/game.js"></script>
+
     <title>Adventure Time</title>
 </head>
 
@@ -50,32 +54,33 @@
 
         </div>
 
-        <div class="d-flex flex-row justify-content-between p-2" id="battledome">
+        <div class="rowd-flex flex-row justify-content-between p-2" id="battledome">
 
-            <div id="character-box">
-                <h2>Your Character</h2>
-                <div id="character"></div>
+            <div class="d-flex flex-row justify-content-between p-2" id="arena">
+
+                <div id="character-box">
+                    <h2>Your Character</h2>
+                    <div id="character"></div>
+                </div>
+
+                <div id="attack-box">
+                    <h2>Fight!</h2>
+                    <button id="battle">Attack!</button>
+                </div>
+
+                <div id="defender-box">
+                    <h2>Defender</h2>
+                    <div id="enemies"></div>
+                </div>
+
             </div>
-
-            <div id="attack-box">
-                <h2>Fight!</h2>
-                <button id="battle">Attack!</button>
-            </div>
-
-            <div id="defender-box">
-                <h2>Defender</h2>
-                <div id="enemies"></div>
-            </div>
-
-        </div>
-
 
 
         <div class="d-flex flex-row justify-content-start" id="enemies-row">
             <h2>Enemies Remaining:</h2>
-            
-        </div>
 
+        </div>
+    </div>
 
 
 
@@ -92,6 +97,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>

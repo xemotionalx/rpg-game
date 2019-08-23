@@ -9,7 +9,7 @@
 // if hp of character falls below zero
 //you disappear
 //restart button pops up
-
+$(document).ready(function () {
 
 
 var game = {
@@ -18,23 +18,71 @@ var game = {
     fighter1: $("#fighter-1"),
     fighter2: $("#fighter-2"),
     fighter3: $("#fighter-3"),
+    //all fighters
+    allFighters: $(".fighter-card"),
     // fighter hit point divs
-    fighterHP0: $("#fighter-hp-0"),
-    fighterHP1: $("#fighter-hp-1"),
-    fighterHP2: $("#fighter-hp-2"),
-    fighterHP3: $("#fighter-hp-3"),
+    fighterHP0DIV: $("#fighter-hp-0"),
+    fighterHP1DIV: $("#fighter-hp-1"),
+    fighterHP2DIV: $("#fighter-hp-2"),
+    fighterHP3DIV: $("#fighter-hp-3"),
+    //battledome div
+    battledome: $("#battledome"),
     // your character div
-    fighterHP0: $("#fighter-hp-0"),
-    fighterHP1: $("#fighter-hp-1"),
-    fighterHP2: $("#fighter-hp-2"),
-    fighterHP3: $("#fighter-hp-3"),
+    characterDiv: $("#character-box"),
+    //defender div
+    defenderDiv: $("#defender-box"),
+    //enemies remaining div
+    enemiesRemainDiv: $("#enemies-row"),
 
     //character selection
     chooseCharacter: function() {
         this.fighter0.on("click", function(){
-            fighter0.addClass("clear");
+            game.allFighters.css("display", "none");
+            game.battledome.css("display", "block");
+            game.characterDiv.append(game.fighter0);
+            game.enemiesRemainDiv.append(game.fighter1);
+            game.enemiesRemainDiv.append(game.fighter2);
+            game.enemiesRemainDiv.append(game.fighter3);
+            game.allFighters.css("display", "block"); 
+        });
 
+        this.fighter1.on("click", function(){
+            game.allFighters.css("display", "none");
+            game.battledome.css("display", "block");
+            game.characterDiv.append(game.fighter1);
+            game.enemiesRemainDiv.append(game.fighter0);
+            game.enemiesRemainDiv.append(game.fighter2);
+            game.enemiesRemainDiv.append(game.fighter3);
+            game.allFighters.css("display", "block");
+            
+        });
+
+        this.fighter2.on("click", function(){
+            game.allFighters.css("display", "none");
+            game.battledome.css("display", "block");
+            game.characterDiv.append(game.fighter2);
+            game.enemiesRemainDiv.append(game.fighter0);
+            game.enemiesRemainDiv.append(game.fighter1);
+            game.enemiesRemainDiv.append(game.fighter3);
+            game.allFighters.css("display", "block");
+            
+        });
+
+        this.fighter3.on("click", function(){
+            game.allFighters.css("display", "none");
+            game.battledome.css("display", "block");
+            game.characterDiv.append(game.fighter3);
+            game.enemiesRemainDiv.append(game.fighter0);
+            game.enemiesRemainDiv.append(game.fighter1);
+            game.enemiesRemainDiv.append(game.fighter2);
+            game.allFighters.css("display", "block");
+            
         });
     },
 }
 
+game.chooseCharacter();
+
+
+
+});

@@ -23,7 +23,11 @@ body {
 }
 
 /* Battle Dome */
+
 #battledome {
+    display: none;
+}
+#arena {
     background-color: rgba(187, 200, 216, 0.8);
     border: 10px solid #a78a98;
     border-radius: 10px;
