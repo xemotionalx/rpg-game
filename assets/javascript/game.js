@@ -14,11 +14,26 @@ $(document).ready(function () {
 
     var game = {
 
-        //all fighters
+        //all fighter arrays
         fighterArray: [$("#fighter-0"), $("#fighter-1"), $("#fighter-2"), $("#fighter-3")],
+        fighterHpArray: [100, 120, 160, 180],
+        fighterAtkArray: [25, 30, 40, 50],
 
-        //enemies
+        //enemies array
         enemiesArray: [],
+
+        //enemies defeated array
+        enemiesDefeatedArray: [],
+
+        //playerValues
+        playerHp: 10,
+        playerAtk: 10,
+
+        //defender values
+        defenderSelected: false,
+        defender: "",
+        defenderHP: 10,
+        defenderAtk: 10,
 
         //battledome div
         battledome: $("#battledome"),
@@ -39,8 +54,8 @@ $(document).ready(function () {
                 if (i === fighter) {
                     game.characterDiv.append(game.fighterArray[i]);
                     game.fighterArray[i].css("display", "block");
-                    console.log(game.fighterArray[i]);
-
+                    game.playerHp = game.fighterHpArray[i];
+                    game.playerAtk = game.fighterAtkArray[i];
                 } else {
                     game.fighterArray[i].css("display", "none");
                     enemy = $("#enemy-" + i);
@@ -52,10 +67,11 @@ $(document).ready(function () {
                 game.enemiesArray[i].css("display", "block");
             };
 
+            console.log("player attack: " + game.playerAtk);
+            console.log("player hp: " + game.playerHp);
         },
 
         chooseCharacterOnClick: function () {
-
             game.fighterArray[0].on("click", function () {
                 fighter = 0;
                 game.chooseCharacter();
@@ -79,15 +95,67 @@ $(document).ready(function () {
         },
 
         // Choose Enemy
-        /*chooseEnemyOnClick: function() {
-            game.enemiesArray[0].on("click", function() {
-                game.enemiesArray[0].css("display", "none");
+        chooseEnemy: function () {
+            game.defenderHP = game.fighterHpArray[enemyClicked];
+            game.defenderAtk = game.fighterAtkArray[enemyClicked];
+            game.defenderSelected = true;
+            
+            switch (enemyClicked) {
+                case 0:
+                    game.defender = $("#enemy-0");
+                    break;
+                case 1:
+                    game.defender = $("#enemy-1");
+                    break;
+                case 2:
+                    game.defender = $("#enemy-2");
+                    break;
+                case 3:
+                    game.defender = $("#enemy-3");
+                    break;
+            }
+
+            game.defenderDiv.append(game.defender);
+        },
+
+        chooseEnemyOnClick: function () {
+
+            $("#enemy-0").on("click", function () {
+                enemyClicked = 0;
+                game.chooseEnemy();
+                console.log("defender HP: " + game.defenderHP);
+                console.log("defender Attack: " + game.defenderAtk);
+                console.log("defender selected?" + game.defenderSelected);
             });
-        },*/
+
+            $("#enemy-1").on("click", function () {
+                enemyClicked = 1;
+                game.chooseEnemy();
+                console.log("defender HP: " + game.defenderHP);
+                console.log("defender Attack: " + game.defenderAtk);
+                console.log("defender selected?" + game.defenderSelected);
+            });
+
+            $("#enemy-2").on("click", function () {
+                enemyClicked = 2;
+                game.chooseEnemy();
+                console.log("defender HP: " + game.defenderHP);
+                console.log("defender Attack: " + game.defenderAtk);
+                console.log("defender selected?" + game.defenderSelected);
+            });
+
+            $("#enemy-3").on("click", function () {
+                enemyClicked = 3;
+                game.chooseEnemy();
+                console.log("defender HP: " + game.defenderHP);
+                console.log("defender Attack: " + game.defenderAtk);
+                console.log("defender selected?" + game.defenderSelected);
+            });
+        },
 
     }
 
     game.chooseCharacterOnClick();
-    //game.chooseEnemyOnClick();
+     game.chooseEnemyOnClick();
 
 });
