@@ -27,6 +27,7 @@ body {
 #battledome {
     display: none;
 }
+
 #arena {
     background-color: rgba(187, 200, 216, 0.8);
     border: 10px solid #a78a98;
@@ -38,6 +39,16 @@ body {
     background-color: rgba(254, 167, 139, 0.8);
     border: 2px solid #ffd83a;
     border-radius: 10px;
+}
+
+.enemy {
+    color: white;
+    background-color: rgba(254, 167, 139, 0.8);
+    border: 5px solid #ffd83a;
+}
+
+#enemy-0, #enemy-1, #enemy-2, #enemy-3  {
+    display: none;
 }
 
 /* javascript classes to display and block*/

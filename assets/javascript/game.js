@@ -12,77 +12,81 @@
 $(document).ready(function () {
 
 
-var game = {
-    // fighter divs
-    fighter0: $("#fighter-0"),
-    fighter1: $("#fighter-1"),
-    fighter2: $("#fighter-2"),
-    fighter3: $("#fighter-3"),
-    //all fighters
-    allFighters: $(".fighter-card"),
-    // fighter hit point divs
-    fighterHP0DIV: $("#fighter-hp-0"),
-    fighterHP1DIV: $("#fighter-hp-1"),
-    fighterHP2DIV: $("#fighter-hp-2"),
-    fighterHP3DIV: $("#fighter-hp-3"),
-    //battledome div
-    battledome: $("#battledome"),
-    // your character div
-    characterDiv: $("#character-box"),
-    //defender div
-    defenderDiv: $("#defender-box"),
-    //enemies remaining div
-    enemiesRemainDiv: $("#enemies-row"),
+    var game = {
 
-    //character selection
-    chooseCharacter: function() {
-        this.fighter0.on("click", function(){
-            game.allFighters.css("display", "none");
+        //all fighters
+        fighterArray: [$("#fighter-0"), $("#fighter-1"), $("#fighter-2"), $("#fighter-3")],
+
+        //enemies
+        enemiesArray: [],
+
+        //battledome div
+        battledome: $("#battledome"),
+        // your character div
+        characterDiv: $("#character-box"),
+        //defender div
+        defenderDiv: $("#defender-box"),
+        //enemies remaining div
+        enemiesRemainDiv: $("#enemies-row"),
+
+        //character selection, placing on game board
+        chooseCharacter: function () {
             game.battledome.css("display", "block");
-            game.characterDiv.append(game.fighter0);
-            game.enemiesRemainDiv.append(game.fighter1);
-            game.enemiesRemainDiv.append(game.fighter2);
-            game.enemiesRemainDiv.append(game.fighter3);
-            game.allFighters.css("display", "block"); 
-        });
 
-        this.fighter1.on("click", function(){
-            game.allFighters.css("display", "none");
-            game.battledome.css("display", "block");
-            game.characterDiv.append(game.fighter1);
-            game.enemiesRemainDiv.append(game.fighter0);
-            game.enemiesRemainDiv.append(game.fighter2);
-            game.enemiesRemainDiv.append(game.fighter3);
-            game.allFighters.css("display", "block");
-            
-        });
+            for (i = 0; i < game.fighterArray.length; i++) {
 
-        this.fighter2.on("click", function(){
-            game.allFighters.css("display", "none");
-            game.battledome.css("display", "block");
-            game.characterDiv.append(game.fighter2);
-            game.enemiesRemainDiv.append(game.fighter0);
-            game.enemiesRemainDiv.append(game.fighter1);
-            game.enemiesRemainDiv.append(game.fighter3);
-            game.allFighters.css("display", "block");
-            
-        });
+                game.fighterArray[i].css("display", "none");
 
-        this.fighter3.on("click", function(){
-            game.allFighters.css("display", "none");
-            game.battledome.css("display", "block");
-            game.characterDiv.append(game.fighter3);
-            game.enemiesRemainDiv.append(game.fighter0);
-            game.enemiesRemainDiv.append(game.fighter1);
-            game.enemiesRemainDiv.append(game.fighter2);
-            game.allFighters.css("display", "block");
-            
-        });
-    },
-}
-
-game.chooseCharacter();
+                if (i === fighter) {
+                    game.characterDiv.append(game.fighterArray[i]);
+                    game.fighterArray[i].css("display", "block");
+                    console.log(game.fighterArray[i]);
+                } else {
+                    enemy = $("#enemy-" + i);
+                    game.enemiesArray.push(enemy);
+                    for (i = 0; i < game.enemiesArray.length; i++) {
+                        game.enemiesArray[i].css("display", "block");
+                    }
+                };
+            };
 
 
+        },
+
+        chooseCharacterOnClick: function () {
+
+            game.fighterArray[0].on("click", function () {
+                fighter = 0;
+                game.chooseCharacter();
+            });
+
+            game.fighterArray[1].on("click", function () {
+                fighter = 1;
+                game.chooseCharacter();
+            });
+
+            game.fighterArray[2].on("click", function () {
+                fighter = 2;
+                game.chooseCharacter();
+            });
+
+            game.fighterArray[3].on("click", function () {
+                fighter = 3;
+                game.chooseCharacter();
+            });
+
+        },
+
+        // Choose Enemy
+        /*chooseEnemyOnClick: function() {
+            game.enemiesArray[0].on("click", function() {
+                game.enemiesArray[0].css("display", "none");
+            });
+        },*/
+
+    }
+
+    game.chooseCharacterOnClick();
+    //game.chooseEnemyOnClick();
 
 });
