@@ -96,6 +96,12 @@ $(document).ready(function () {
 
         // Choose Enemy
         chooseEnemy: function () {
+        
+            if (game.defenderSelected) {
+
+                $("#attack-txt").text("You are already in a battle!");
+                
+            } else {
             game.defenderHP = game.fighterHpArray[enemyClicked];
             game.defenderAtk = game.fighterAtkArray[enemyClicked];
             game.defenderSelected = true;
@@ -116,6 +122,7 @@ $(document).ready(function () {
             }
 
             game.defenderDiv.append(game.defender);
+        };
         },
 
         chooseEnemyOnClick: function () {
@@ -156,6 +163,6 @@ $(document).ready(function () {
     }
 
     game.chooseCharacterOnClick();
-     game.chooseEnemyOnClick();
+    game.chooseEnemyOnClick();
 
 });
