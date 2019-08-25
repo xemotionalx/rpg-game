@@ -46,6 +46,14 @@ $(document).ready(function () {
         enemyAtk: "",
         enemyHpTxt: "",   
 
+        //hide all enemies
+        hideEnemies: function() {
+            $("#enemy-0").css("display", "none");
+             $("#enemy-1").css("display", "none");
+              $("#enemy-2").css("display", "none");
+               $("#enemy-3").css("display", "none");
+        },
+
         //character selection, placing on game board
         chooseCharacter: function () {
 
@@ -62,7 +70,7 @@ $(document).ready(function () {
                     game.playerAtk = game.playerAtkValues[i];
                 } 
                 else {
-                     game.enemyCardArray[i].css("display", "none");
+                     //game.enemyCardArray[i].css("display", "none");
                      game.currentEnemy = $("#enemy-" + i);
                      game.activeEnemyCardsArray.push(game.currentEnemy);
                  };
@@ -134,8 +142,9 @@ $(document).ready(function () {
 
                 game.enemyBox.append(game.currentEnemy);
 
-                console.log("ENEMY HP: " + game.playerHp);
-             console.log("ENEMY ATTACK: " + game.playerAtk);
+            console.log("ENEMY HP: " + game.enemyHp);
+             console.log("ENEMY ATTACK: " + game.enemyAtk);
+             console.log("CURRENT ENEMY: " + game.currentEnemy);
              console.log("ENEMY SELECTED? " + game.enemySelected);
             };
         },
@@ -163,12 +172,14 @@ $(document).ready(function () {
             });
         },
 
-        // // Attack function
+        // Attack function
         // attackOnClick: function () {
-        //     game.attackBtn.on("click", function () {
-        //         if (game.defenderSelected) {
-        //             game.defenderHp -= game.playerAtk;
-        //             game.playerHp -= game.defenderAtk;
+        //    game.attackBtn.on("click", function () {
+                
+        //     if (game.enemySelected) {
+                    
+        //             game.enemyHp -= game.playerAtk;
+        //             game.playerHp -= game.enemyAtk;
         //             game.playerAtk += 6;
 
         //             if (game.playerHp <= 0) {
@@ -193,37 +204,59 @@ $(document).ready(function () {
         //                 game.defenderHpTxt.text(game.defenderHp + " HP");
         //             };
         //         } else {
-        //             game.defenderDiv.text("Choose an opponant!!");
-        //         };
+        //              game.enemyBox.text("Choose an opponent!!");
+        //          };
+        //          console.log("ENEMY HP AFTER ATTACK: " + game.playerHp);
+        //         console.log("PLAYER ATTACK AFTER ATTACK: " + game.playerAtk);
         //     });
         // },
 
+        playAgain: function() {
+            //reset dom
+            //game.enemiesRow.append(game.currentEnemy);
+
+            //empty enemy box
+                game.enemiesRow.append(game.currentEnemy);
+
+            // for (i = 0; i < game.enemyCardArray; i++) {
+            //    enemiesRow.append(game.enemyCardArray[i]);
+            // }
+
+            game.battledome.css("display", "none");
+
+            for (i = 0; i < game.playerCardArray.length; i++) {
+                game.playerRow.append(game.playerCardArray[i]);
+                game.playerCardArray[i].css("display", "block");
+            }
+
+            game.hideEnemies();
+
+            //reset values
+            game.playerAtk = 10;
+            game.playerHp = 100;
+            game.enemyHp = 100;
+            game.activeEnemyCardsArray = [];
+            game.enemySelected = false;
+
+
+            console.log("reset PLAYER HP: " + game.playerHp);
+            console.log("reset PLAYER ATTACK: " + game.playerAtk);
+            console.log("reset ENEMIES ARRAY: " + game.activeEnemyCardsArray);
+            console.log("reset ENEMY HP: " + game.playerHp);
+
+        },
+
         playAgainOnClick: function() {
             game.playAgainBtn.on("click", function () {
-
-                //reset dom
-                game.battledome.css("display", "none");
-
-                for (i = 0; i < game.playerCardArray.length; i++) {
-                    game.playerRow.append(game.playerCardArray[i]);
-                    game.playerCardArray[i].css("display", "block");
-                }
-
-                //reset values
-                game.playerAtk = 10;
-                game.playerHp = 10;
-                game.activeEnemyCardsArray = [];
-                enemySelected = false;
-                console.log("reset PLAYER HP: " + game.playerHp);
-                console.log("reset PLAYER ATTACK: " + game.playerAtk);
-                console.log("reset ENEMIES ARRAY: " + game.activeEnemyCardsArray);
+                game.playAgain();
             });
         }
     };
 
+    game.hideEnemies();
     game.playAgainOnClick();
     game.chooseCharacterOnClick();
     game.chooseEnemyOnClick();
-    // game.attackOnClick();
+    //game.attackOnClick();
 
 });
