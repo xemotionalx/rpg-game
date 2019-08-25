@@ -5,12 +5,10 @@ body {
     font-size: 1em;
 }
 
-/* Fighter Cards */
+/* All Cards */
 
 .fighter-card {
     color: white;
-    background-color: rgba(167, 169, 214, 0.8);
-    border: 5px solid #6585b6;
     border-radius: 10px;
     width: 200px;
     margin: 10px;
@@ -20,6 +18,14 @@ body {
 .fighter-name {
     font-size: 1.3em;
     color: #ffff9e;
+}
+
+/* Fighter Cards */
+
+.player {
+    background-color: rgba(167, 169, 214, 0.8);
+    border: 5px solid #6585b6;
+    border-radius: 10px;
 }
 
 /* Battle Dome */
