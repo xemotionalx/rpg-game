@@ -49,6 +49,10 @@ body {
     border-radius: 10px;
 }
 
+#enemies-defeted-row {
+    display:none;
+}
+
 .enemy {
     color: white;
     background-color: rgba(254, 167, 139, 0.8);
