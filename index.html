@@ -17,16 +17,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/game.js"></script>
 
-    <title>Adventure Time</title>
+    <title>Adventure Time Battle!</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="row col-12">
-            <h1>Adventure Time Battle!</h1>
+        <div class="row col-12 justify-content-center">
+            <img src="assets/images/adventure-time-logo-sm.png" class="img-fluid">
         </div>
 
-        <div class="row" id="fighter-row">
+        <div class="row justify-content-center" id="fighter-row">
 
             <div class="fluid fighter-card player" id="player-0" value="12">
                 <h3 class="fighter-name">Finn & Jake!</h2>
@@ -56,59 +56,61 @@
 
         <div class="flex-row justify-content-between p-2" id="battledome">
 
-        <div class="d-flex flex-row justify-content-between p-2" id="arena">
+            <div class="d-flex flex-row justify-content-between p-2 justify-content-center" id="arena">
 
-            <div>
-                <h2>Your Character</h2>
-                <div id="player-box"></div>
+                <div>
+                    <h2>Your Character</h2>
+                    <div id="player-box"></div>
+                </div>
+
+                <div>
+                    <h2>Fight!</h2>
+                    <button id="attack-btn">Attack!</button>
+                    <div id="attack-txt"></div>
+                </div>
+
+                <div>
+                    <h2>Defender</h2>
+                    <div id="enemy-box"></div>
+                </div>
+
             </div>
 
-            <div>
-                <h2>Fight!</h2>
-                <button id="attack-btn">Attack!</button>
-                <div id="attack-txt"></div>
-            </div>
 
-            <div>
-                <h2>Defender</h2>
-                <div id="enemy-box"></div>
-            </div>
+          
+                <div class="flex-row justify-content-center enemy">
+                    <h2>Enemies Remaining:</h2>
+                </div>
 
+                <div class="d-flex flex-row justify-content-start enemy" id="enemies-row">
+                    <div class="fluid fighter-card enemy" id="enemy-0" value="12">
+                        <h3 class="fighter-name">Finn & Jake!</h2>
+                            <img src="assets/images/sm-fighter-0.png" class="img-fluid" id="fighter-img-0">
+                            <div value="100">100 HP</div>
+                    </div>
+
+                    <div class="fluid fighter-card enemy" id="enemy-1" value="8">
+                        <h3 class="fighter-name">Ice King!</h2>
+                            <img src="assets/images/sm-fighter-1.png" class="img-fluid" id="fighter-img-1">
+                            <div id="enemy-hp-1" value="120">120 HP</div>
+                    </div>
+
+                    <div class="fluid fighter-card enemy" id="enemy-2" value="7">
+                        <h3 class="fighter-name">Marceline!</h2>
+                            <img src="assets/images/sm-fighter-2.png" class="img-fluid" id="fighter-img-2">
+                            <div id="enemy-hp-2" value="140">140 HP</div>
+                    </div>
+
+                    <div class="fluid fighter-card enemy" id="enemy-3" value="9">
+                        <h3 class="fighter-name">Flame Princess!</h2>
+                            <img src="assets/images/sm-fighter-3.png" class="img-fluid" id="fighter-img-3">
+                            <div id="enemy-hp-3" value="160">160 HP</div>
+                    </div>
+                </div>
+        
+            <button id="play-again">Play Again?</button>
         </div>
-
-
-        <div class="d-flex flex-row justify-content-start" id="enemies-row">
-            <h2>Enemies Remaining:</h2>
-
-            <div class="fluid fighter-card enemy" id="enemy-0" value="12">
-                <h3 class="fighter-name">Finn & Jake!</h2>
-                    <img src="assets/images/sm-fighter-0.png" class="img-fluid" id="fighter-img-0">
-                    <div value="100">100 HP</div>
-            </div>
-
-            <div class="fluid fighter-card enemy" id="enemy-1" value="8">
-                <h3 class="fighter-name">Ice King!</h2>
-                    <img src="assets/images/sm-fighter-1.png" class="img-fluid" id="fighter-img-1">
-                    <div id="enemy-hp-1" value="120">120 HP</div>
-            </div>
-
-            <div class="fluid fighter-card enemy" id="enemy-2" value="7">
-                <h3 class="fighter-name">Marceline!</h2>
-                    <img src="assets/images/sm-fighter-2.png" class="img-fluid" id="fighter-img-2">
-                    <div id="enemy-hp-2" value="140">140 HP</div>
-            </div>
-
-            <div class="fluid fighter-card enemy" id="enemy-3" value="9">
-                <h3 class="fighter-name">Flame Princess!</h2>
-                    <img src="assets/images/sm-fighter-3.png" class="img-fluid" id="fighter-img-3">
-                    <div id="enemy-hp-3" value="160">160 HP</div>
-            </div>
-
-        </div>
-        <button id="play-again">Play Again?</button>
     </div>
-</div>
-<div class="row" id="enemies-defeated-row"></div>
 
 
     </div>

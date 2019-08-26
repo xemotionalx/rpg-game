@@ -3,6 +3,7 @@ body {
     background-repeat: no-repeat;
     background-size: auto;
     font-size: 1em;
+    text-align: center;
 }
 
 /* All Cards */
@@ -43,20 +44,17 @@ body {
 
 
 /* Enemies Remaining */
-#enemies-row {
+/* #enemies-row {
     background-color: rgba(254, 167, 139, 0.8);
     border: 2px solid #ffd83a;
     border-radius: 10px;
-}
-
-#enemies-defeted-row {
-    display:none;
-}
+} */
 
 .enemy {
     color: white;
     background-color: rgba(254, 167, 139, 0.8);
     border: 5px solid #ffd83a;
+    border-radius: 10px;
 }
 
 #enemy-0, #enemy-1, #enemy-2, #enemy-3  {
